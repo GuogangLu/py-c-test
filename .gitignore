@@ -1,0 +1,16 @@
+TAGS
+tags
+#忽略编译过程文件
+*.o
+*.i
+*.d
+*.crf
+*.bin
+*.axf
+*.obj
+*.so
+#忽略python二进制码
+*.pyc
+#忽略emacs产生的备份文件
+*~
+\#*
