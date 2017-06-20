@@ -1,2 +1,6 @@
 import spam
-spam.system("ls -l");
+tst=123;
+def test():
+    print("pyprint");
+
+spam.system("ls -l", "testok", tst, test);

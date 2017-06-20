@@ -3,12 +3,22 @@
 static PyObject *SpamError;
 static PyObject* spam_system(PyObject *self, PyObject *args)
 {
-    const char *command;
+    const char *command=NULL;
+    const char *teststr=NULL;
     int sts;
-
-    if(!PyArg_ParseTuple(args, "s", &command)){
+    Py_ssize_t size = PyObject_Size(args);
+    PyObject *attr;
+    PyObject *fun;
+    
+    printf("size=%d\n", size);
+    if(!PyArg_ParseTuple(args, "s|s|O|O", &command, &teststr, &attr, &fun)){
         return NULL;
     }
+    //if(!PyArg_ParseTuple(args+1, "s", &teststr)){
+    //    return NULL;
+    //}
+    PyObject_CallFunctionObjArgs(fun, NULL);
+    printf("teststr: %s\n", teststr);
     sts = system(command);
     if(sts<0){
         PyErr_SetString(SpamError, "system command failed");
@@ -17,6 +27,11 @@ static PyObject* spam_system(PyObject *self, PyObject *args)
 
     //return Py_BuildValue("i", sts);
     return PyLong_FromLong(sts);
+}
+
+static PyObject* spam_set_fun(PyObject *self, PyObject *args)
+{
+    
 }
 
 static PyMethodDef SpamMethods[] = {
