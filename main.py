@@ -1,6 +1,14 @@
 import spam
-tst=123;
+#tst=123;
+tst = "remain test";
 def test():
     print("pyprint");
 
-spam.system("ls -l", "testok", tst, test);
+r=spam.system("ls -l", "2345", tst, test);
+print("r=", r);
+
+spam.lg="lgg";
+tmp=spam.remain();
+spam.lg="lugg";
+
+print(spam.__dict__);
