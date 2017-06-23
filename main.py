@@ -1,3 +1,4 @@
+import sys 
 import spam
 #tst=123;
 tst = "remain test";
